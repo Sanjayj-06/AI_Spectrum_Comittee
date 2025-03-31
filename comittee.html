@@ -148,8 +148,109 @@
         }
 
         .section:not(.organising-committee):has(.committee:nth-child(2):last-child) .committee {
-            flex: 0 0 calc(45% - 20px);
-            max-width: calc(45% - 20px);
+            flex: 0 0 calc(48% - 50px);
+            max-width: calc(100% - 100px);
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+                gap: 30px;
+                width: 95%;
+            }
+
+            .section {
+                gap: 20px;
+                width: 100%;
+            }
+
+            .gold-box, .committee {
+                flex-direction: row;
+                width: 100%;
+                max-width: 100%;
+                margin: 10px auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .gold-box img, .committee img {
+                width: 100px;
+                height: 100px;
+                min-width: 100px; 
+            }
+
+            .gold-box .details, .committee .details {
+                font-size: 0.9em;
+                flex: 1;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                width: 100%;
+                margin: 20px 0;
+                padding: 0 10px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+                width: 100%;
+                margin: 15px 0;
+                padding: 0 10px;
+            }
+            .section:has(.committee:first-child:nth-last-child(2)),
+            .section:has(.committee:first-child:nth-last-child(2) ~ .committee) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 100%;
+                padding: 0;
+                gap: 15px;
+            }
+
+            .section:has(.committee:first-child:nth-last-child(2)) .committee {
+                width: 98%;
+                max-width: 98%;
+                margin: 5px auto;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 5px;
+            }
+
+            .gold-box, .committee {
+                padding: 12px;
+                margin: 8px 0;
+            }
+
+            .gold-box img, .committee img {
+                width: 80px;
+                height: 80px;
+                min-width: 80px;
+            }
+
+            .gold-box .details, .committee .details {
+                font-size: 0.85em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+            .section:has(.committee:first-child:nth-last-child(2)) .committee {
+                width: 98%;
+                max-width: 98%;
+                margin: 5px auto;
+            }
         }
     </style>
 </head>
