@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizing Committee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        .gold-box {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            background: linear-gradient(to right, #e7d59b, #b8860b); 
+            color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            text-align: left;
+            font-weight: bold;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            flex: 1 1 calc(33.33% - 40px);
+            max-width: 450px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .gold-box:hover {
+            transform: translateY(-10px); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+        }
+        .gold-box img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #b8860b; 
+            box-shadow: 0 0 10px rgba(184, 134, 11, 0.5); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        }
+        .gold-box img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(184, 134, 11, 0.8); 
+            border: 5px solid #eacc21; 
+        }
+        .committee img {
+            width: 130px;
+            height: 130px;
+            object-fit:cover; 
+            border-radius: 50%;
+            border: 5px solid #808080; 
+            box-shadow: 0 0 15px rgba(128, 128, 128, 0.8); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        }
+        .committee img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(192, 192, 192, 1);
+            border: 5px solid #f6f4f4; 
+        }
+        .gold-box .details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .gold-box .details strong, .committee .details strong {
+            font-weight: bold; 
+            font-size: 1.1em;
+        }
+        .gold-box .details p, .committee .details p {
+            font-weight: lighter; 
+            font-size: 0.9em;
+            margin: 0;
+        }
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 30px;
+            max-width: 1000px;
+        }
+        .committee {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            background: linear-gradient(to right, #e7e4e4, #928f8f); 
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #c0c0c0; 
+            box-shadow: 0 4px 15px rgba(192, 192, 192, 0.5); 
+            text-align: left;
+            flex: 1 1 calc(33.33% - 40px); 
+            max-width: 450px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .committee:hover {
+            transform: translateY(-10px); 
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.8); 
+        }
+        .committee .details {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .committee .details strong {
+            color: #000000; 
+        }
+        .committee .details p {
+            color: #4d4d4d; 
+        }
+        h2, h3 {
+            color: #9e5706;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .section.organising-committee {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+        }
+        .section.organising-committee .gold-box {
+            flex: 1 1 calc(33.33% - 40px); 
+            max-width: 450px;
+        }
+        .section:not(.organising-committee) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section:not(.organising-committee):has(.committee:nth-child(2):last-child) {
+            justify-content: center;
+        }
+
+        .section:not(.organising-committee):has(.committee:nth-child(2):last-child) .committee {
+            flex: 0 0 calc(48% - 50px);
+            max-width: calc(100% - 100px);
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+                gap: 30px;
+                width: 95%;
+            }
+
+            .section {
+                gap: 20px;
+                width: 100%;
+            }
+
+            .gold-box, .committee {
+                flex-direction: row;
+                width: 100%;
+                max-width: 100%;
+                margin: 10px auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .gold-box img, .committee img {
+                width: 100px;
+                height: 100px;
+                min-width: 100px; 
+            }
+
+            .gold-box .details, .committee .details {
+                font-size: 0.9em;
+                flex: 1;
+            }
+
+            h2 {
+                font-size: 1.8em;
+                width: 100%;
+                margin: 20px 0;
+                padding: 0 10px;
+            }
+
+            h3 {
+                font-size: 1.4em;
+                width: 100%;
+                margin: 15px 0;
+                padding: 0 10px;
+            }
+            .section:has(.committee:first-child:nth-last-child(2)),
+            .section:has(.committee:first-child:nth-last-child(2) ~ .committee) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 100%;
+                padding: 0;
+                gap: 15px;
+            }
+
+            .section:has(.committee:first-child:nth-last-child(2)) .committee {
+                width: 98%;
+                max-width: 98%;
+                margin: 5px auto;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 5px;
+            }
+
+            .gold-box, .committee {
+                padding: 12px;
+                margin: 8px 0;
+            }
+
+            .gold-box img, .committee img {
+                width: 80px;
+                height: 80px;
+                min-width: 80px;
+            }
+
+            .gold-box .details, .committee .details {
+                font-size: 0.85em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+            .section:has(.committee:first-child:nth-last-child(2)) .committee {
+                width: 98%;
+                max-width: 98%;
+                margin: 5px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>ORGANISING COMITTEE</h2>
+    <div class="container">
+        <div class="section organising-committee">
+            <div class="gold-box">
+                <img src="assests_images\trustee.jpg" alt="Shri L Gopalakrishnan">
+                <div class="details">
+                    <p>CHIEF PATRON</p>
+                    <strong>Shri L Gopalakrishnan</strong>
+                    Managing Trustee<br>PSG & Sons Charities Trust
+                </div>
+            </div>
+            <div class="gold-box">
+                <img src="assests_images\Prakasan.png" alt="Dr K Prakasan">
+                <div class="details">
+                    <p>PATRON</p>
+                    <strong>Dr K Prakasan</strong>
+                    Principal<br>PSG College of Technology
+                </div>
+            </div>
+            <div class="gold-box">
+                <img src="assests_images\Karpagam.png" alt="Dr G R Karpagam">
+                <div class="details">
+                    <p>GENERAL CHAIR</p>
+                    <strong>Dr G R Karpagam</strong>
+                    Professor , CSE<br>Director <br>AI Consortium<br>PSG College of Technology
+                </div>
+            </div>
+            <div class="gold-box">
+                <img src="assests_images\Vinoth Kumar.png" alt="Dr B Vinoth Kumar">
+                <div class="details">
+                    <p>GENERAL CHAIR</p>
+                    <strong>Dr B Vinoth Kumar</strong>
+                    Professor , IT<br>Infrastructure Technical Lead <br>AI Consortium<br>PSG College of Technology
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <h2>ORGANISING CHAIRS</h2>
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Indumathi.png" alt="Dr D Indhumathi">
+                <div class="details">
+                    <strong>Dr D Indhumathi</strong>
+                    Associate Professor <br> Dept. of Computer Science & Engineering 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Rekha.png" alt="Dr R Rekha">
+                <div class="details">
+                    <strong>Dr R Rekha</strong>
+                    Associate Professor<br> Dept. of Information Technology
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Sathiyapriya.png" alt="Dr K Sathiyapriya">
+                <div class="details">
+                    <strong>Dr K Sathiyapriya</strong>
+                    Associate Professor <br> Dept. of Computer Science & Engineering 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Senthilprabha.png" alt="Dr R Senthil Prabha">
+                <div class="details">
+                    <strong>Dr R Senthil Prabha</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Information Technology
+                </div>
+            </div>
+        </div>
+        <h2>TREASURY AND BUDGET CHAIRS</h2>
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Thirumahal.png" alt="Ms R Thirumahal">
+                <div class="details">
+                    <strong>Ms R Thirumahal</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Computer Science & Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Sivaranjani.png" alt="Dr S Sivaranjini">
+                <div class="details">
+                    <strong>Dr S Sivaranjini</strong>
+                    Assistant Professor(Sr.G)<br> Dept. of Computer Science & Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Shanmugam.png" alt="Dr C Shanmugam">
+                <div class="details">
+                    <strong>Dr C Shanmugam</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Mechanical Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Maruthamani.png" alt="Dr D Maruthamani">
+                <div class="details">
+                    <strong>Dr D Maruthamani</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Chemistry
+                </div>
+            </div>
+        </div>
+
+        <h2>TRACK CHAIR</h2>
+
+        <h3>Track 1 : AI Genesis</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Indumathi.png" alt="Dr D Indhumathi">
+                <div class="details">
+                    <strong>Dr D Indhumathi</strong>
+                    Associate Professor <br> Dept. of Computer Science & Engineering 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Rekha.png" alt="Dr R Rekha">
+                <div class="details">
+                    <strong>Dr R Rekha</strong>
+                    Associate Professor<br> Dept. of Information Technology
+                </div>
+            </div>
+        </div>
+        <h3>Track 2 : AI Impact</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Sathiyapriya.png" alt="Dr K Sathiyapriya">
+                <div class="details">
+                    <strong>Dr K Sathiyapriya</strong>
+                    Associate Professor <br> Dept. of Computer Science & Engineering 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Bhama.png" alt="Dr S Bhama">
+                <div class="details">
+                    <strong>Dr S Bhama</strong>
+                    Assistant Professor (Sl.G)<br> Dept. of Computer Applications
+                </div>
+            </div>
+        </div>
+        <h3>Track 3 : AI Horizon</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Senthilprabha.png" alt="Dr R Senthil Prabha">
+                <div class="details">
+                    <strong>Dr R Senthil Prabha</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Information Technology 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Sai SUndar.png" alt="Dr G Sai Sundara Krishnan">
+                <div class="details">
+                    <strong>Dr G Sai Sundara Krishnan</strong>
+                    Professor<br> Dept. of Applied Maths and Computational Sciences
+                </div>
+            </div>
+        </div>
+        <h2>PLENARY AND KEYNOTE CHAIRS</h2>
+        <h3>Tutorial Chair</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Ramesh.png" alt="Mr A C Ramesh">
+                <div class="details">
+                    <strong>Mr A C Ramesh</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Computer Science & Engineering 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Gopikarani.png" alt="Dr N Gopika Rani">
+                <div class="details">
+                    <strong>Dr N Gopika Rani</strong>
+                    Assistant Professor (Sl.G)<br> Dept. of Computer Science & Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Nirmala.png" alt="Dr Nirmala Varghese">
+                <div class="details">
+                    <strong>Dr Nirmala Varghese</strong>
+                    Associate Professor <br> Dept. of Apparel & Fashion Design
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Murugan.png" alt="Dr R Murugan">
+                <div class="details">
+                    <strong>Dr R Murugan</strong>
+                    Professor (CAS) <br> Dept. of Textile Technology
+                </div>
+            </div>
+        </div>
+        <h3>Poster and Expo Chairs</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Aruljothi.png" alt="Dr S Arul Jothi">
+                <div class="details">
+                    <strong>Dr S Arul Jothi</strong>
+                    Assistant Professor (Sr.G) <br> Dept. of Computer Science & Engineering 
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Vijiyalakashmi.png" alt="Dr S Vijayalakshmi">
+                <div class="details">
+                    <strong>Dr S Vijayalakshmi</strong>
+                    Assistant Professor (Sl.G)<br> Dept. of Computer Science & Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Suresh.png" alt="Dr M Suresh">
+                <div class="details">
+                    <strong>Dr M Suresh</strong>
+                    Associate Professor <br> Dept. of Robotics & Automation Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Sivaraj.png" alt="Dr D Sivaraj">
+                <div class="details">
+                    <strong>Dr D Sivaraj</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Electronics & Communication Engineering
+                </div>
+            </div>
+        </div>
+        <h3>Government Liaison Chairs</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Jayaprasanth.png" alt="Dr D Jayaprasath">
+                <div class="details">
+                    <strong>Dr D Jayaprasath</strong>
+                    Associate Professor <br> Dept. of Instrumental & Control Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Prabavathi.png" alt="Dr J Prabhavathi">
+                <div class="details">
+                    <strong>Dr J Prabhavathi</strong>
+                    Assistant Professor <br> Dept. of English
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Natarajan.png" alt="Dr A Natarajan">
+                <div class="details">
+                    <strong>Dr A Natarajan</strong>
+                    Professor(CAS)<br> Dept. of Electrical and Electronics Engineering
+                </div>
+            </div>
+        </div>
+        <h3>Publication Chair</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Sangeetha.png" alt="Dr B Sangeetha">
+                <div class="details">
+                    <strong>Dr B Sangeetha</strong>
+                    Assistant Professor (Sl.G)<br> Dept. of Information Technology
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Prakash.jpg" alt="Mr J Prakash">
+                <div class="details">
+                    <strong>Mr J Prakash</strong>
+                    Assistant Professor (Sr.G) <br> Dept. of Computer Science & Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\M.Prakash.png" alt="Mr M Prakash">
+                <div class="details">
+                    <strong>Mr M Prakash</strong>
+                    Librarian<br> Dr GRD Memorial Library
+                </div>
+            </div>
+        </div>
+
+        <h3>Sponsorship Chair</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Dhanalakshmi.png" alt="Dr D Dhanalakshmi">
+                <div class="details">
+                    <strong>Dr D Dhanalakshmi</strong>
+                    Assistant Professor (Sl.G)<br> Dept. of Applied Science
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Surjit.png" alt="Dr R Surjith">
+                <div class="details">
+                    <strong>Dr R Surjith</strong>
+                    Assistant Professor (Sl.G) <br> Dept. of Fashion Technology
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Abirami.png" alt="Ms S K Abirami">
+                <div class="details">
+                    <strong>Ms S K Abirami</strong>
+                    Assistant Professor<br> Dept.of Computer Science & Engineering
+                </div>
+            </div>
+        </div>
+
+        <h3>International Liaison Chair</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Sridevi.png" alt="Dr B Sridevi">
+                <div class="details">
+                    <strong>Dr B Sridevi</strong>
+                    Professor<br> Dept. of Mathematics
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Kalpana.png" alt="Dr M Kalpana">
+                <div class="details">
+                    <strong>Dr M Kalpana</strong>
+                    Associate Professor <br> Dept. of Humanities
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\NIresh.png" alt="Dr J Niresh">
+                <div class="details">
+                    <strong>Dr J Niresh</strong>
+                    Assistant Professor (Sr.G)<br> Dept.of Automobile Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Veerakumar.jpg" alt="Mr Veera Kumar">
+                <div class="details">
+                    <strong>Mr Veera Kumar</strong>
+                    Assistant Professor<br> Dept.of Computer Science & Engineering
+                </div>
+            </div>
+        </div>
+
+        <h3>Panel Discussion</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Thillairajan.png" alt="Dr K Thillairajan">
+                <div class="details">
+                    <strong>Dr K Thillairajan</strong>
+                    Associate Professor (CAS) <br>Dept. of Metallurgical Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Kathirvel.png" alt="Dr P Kathirvel">
+                <div class="details">
+                    <strong>Dr P Kathirvel</strong>
+                    Associate Professor <br> Dept. of Physics
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\ANisha.png" alt="Ms C D Anisha">
+                <div class="details">
+                    <strong>Ms C D Anisha</strong>
+                    Assistant Professor<br> Dept.of Computer Science & Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Rajesh.png" alt="Mr R Rajesh">
+                <div class="details">
+                    <strong>Mr R Rajesh</strong>
+                    Assistant Professor (Sl.G)<br> Dept.of Production Engineering
+                </div>
+            </div>
+        </div>
+
+        <h3>Industry Liaison Chair</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Brindha.png" alt="Dr D Brindha">
+                <div class="details">
+                    <strong>Dr D Brindha</strong>
+                    Assistant Professor (Sl.G) <br>Dept. of Biomedical Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Karthik Vijayakumar.png" alt="Mr. G. Karthik Vijayakumar">
+                <div class="details">
+                    <strong>Mr. G. Karthik Vijayakumar</strong>
+                    Assistant Professor (Sr.G)<br> Dept. of Biotechnology
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Dharani-DNVAoUd9.jpg" alt="Ms Dharani">
+                <div class="details">
+                    <strong>Ms Dharani</strong>
+                    Assistant Professor<br> Dept.of Computer Science & Engineering
+                </div>
+            </div>
+        </div>
+
+        <h3>Publicity and Public Relations Chair</h3>
+        
+        <div class="section">
+            <div class="committee">
+                <img src="assests_images\Praveen.png" alt="Dr S Praveenkumar">
+                <div class="details">
+                    <strong>Dr S Praveenkumar</strong>
+                    Associate Professor<br>Dept. of Civil Engineering
+                </div>
+            </div>
+            <div class="committee">
+                <img src="assests_images\Subramaniam.png" alt="Mr. Subramanian S S">
+                <div class="details">
+                    <strong>Mr. Subramanian S S</strong>
+                    Assistant Professor<br> Dept. of Applied Science
+                </div>
+            </div>
+        </div>   
+</body>
+</html>
